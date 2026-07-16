@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Get your checklist — Florida Medicaid & Disability Benefits Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FFFFFF;
+    --paper-raised:#F5F8FA;
+    --ink:#1C2733;
+    --ink-soft:#5B6B78;
+    --brand:#1B3A5C;
+    --brand-dim:#DCE6EE;
+    --teal:#3E7C82;
+    --flag:#A6570F;
+    --flag-dim:#F3E4D2;
+    --ok:#3F7A56;
+    --ok-dim:#E1EBE4;
+    --hair:#D7DEE2;
+    --radius:10px;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:'Public Sans',sans-serif;font-size:16px;line-height:1.6;}
+  .wrap{max-width:760px;margin:0 auto;padding:0 24px 90px;}
+
+  .topbar-outer{background:var(--brand);padding:16px 24px;margin-bottom:0;}
+  .topbar-inner{max-width:760px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;}
+  .eyebrow{font-family:'Public Sans',sans-serif;font-weight:700;font-size:15px;color:#fff;text-decoration:none;}
+  .privacy-chip{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.03em;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:5px 12px;}
+
+  .progress-wrap{padding:28px 0 0;}
+  .progress-track{height:6px;background:var(--hair);border-radius:999px;overflow:hidden;}
+  .progress-fill{height:100%;background:var(--teal);border-radius:999px;transition:width .25s ease;}
+  .progress-label{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);margin-top:10px;}
+
+  .stepcard{padding:36px 0 12px;}
+  .steplabel{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:12px;}
+  .stepq{font-family:'Public Sans',sans-serif;font-weight:800;font-size:clamp(22px,3.4vw,30px);line-height:1.25;color:var(--brand);margin:0 0 10px;max-width:26ch;}
+  .stephint{font-size:15px;color:var(--ink-soft);margin:0 0 26px;max-width:52ch;}
+
+  .optlist{display:flex;flex-direction:column;gap:10px;margin-bottom:28px;}
+  .opt{
+    display:flex;align-items:center;gap:14px;text-align:left;width:100%;
+    font-family:'Public Sans',sans-serif;font-size:15.5px;color:var(--ink);
+    background:var(--paper-raised);border:1.5px solid var(--hair);border-radius:var(--radius);
+    padding:16px 18px;cursor:pointer;transition:border-color .15s,background .15s;
+  }
+  .opt:hover{border-color:var(--teal);}
+  .opt .k{
+    flex:0 0 auto;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--hair);
+    display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--ink-soft);
+  }
+  .opt .t{flex:1;}
+  .opt .t .sub{display:block;font-size:12.5px;color:var(--ink-soft);margin-top:2px;font-weight:400;}
+  .opt .t .main{font-weight:600;}
+
+  .navrow{display:flex;justify-content:space-between;align-items:center;margin-top:8px;}
+  .backbtn{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-soft);background:none;border:none;cursor:pointer;
+    padding:8px 4px;text-decoration:underline;text-underline-offset:3px;
+  }
+  .backbtn:disabled{opacity:0;pointer-events:none;}
+
+  /* --- Results --- */
+  .results{display:none;}
+  .results.show{display:block;}
+  .stepcard.hide{display:none;}
+
+  .r-hero{padding:36px 0 8px;}
+  .r-eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:12px;}
+  .r-title{font-family:'Public Sans',sans-serif;font-weight:800;font-size:clamp(24px,3.6vw,32px);color:var(--brand);margin:0 0 14px;max-width:28ch;}
+  .r-summary{font-size:15.5px;color:var(--ink-soft);max-width:60ch;margin:0 0 8px;}
+
+  .r-section{margin:34px 0;}
+  .r-section-title{font-family:'Public Sans',sans-serif;font-weight:700;font-size:16.5px;color:var(--brand);margin:0 0 14px;display:flex;align-items:center;gap:8px;}
+  .r-section-title .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;
+    background:var(--brand);color:#fff;border-radius:999px;padding:3px 10px;
+  }
+  .r-section-title.flag .tag{background:var(--flag);}
+  .r-section-title.ok .tag{background:var(--ok);}
+
+  .r-card{background:var(--paper-raised);border:1px solid var(--hair);border-radius:var(--radius);padding:22px 24px;margin-bottom:12px;}
+  .r-card p{margin:0 0 10px;font-size:15px;color:var(--ink);}
+  .r-card p:last-child{margin-bottom:0;}
+  .r-card .contact{font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-soft);}
+
+  .r-callout{background:var(--flag-dim);border:1px solid #E3C39D;border-radius:var(--radius);padding:20px 22px;margin-bottom:12px;}
+  .r-callout .title{font-weight:700;color:var(--flag);font-size:15px;margin:0 0 6px;}
+  .r-callout p{margin:0;font-size:14.5px;color:var(--ink);}
+
+  .linklist{list-style:none;margin:14px 0 0;padding:0;}
+  .linklist li{margin-bottom:8px;}
+  .linklist a{
+    display:inline-flex;align-items:center;gap:8px;color:var(--brand);text-decoration:none;font-size:14.5px;font-weight:600;
+    border-bottom:1.5px solid var(--brand-dim);padding-bottom:1px;
+  }
+  .linklist a:hover{border-bottom-color:var(--brand);}
+
+  .checklist{list-style:none;margin:0;padding:0;}
+  .checklist li{
+    display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-bottom:1px solid var(--hair);font-size:14.5px;
+  }
+  .checklist li:last-child{border-bottom:none;}
+  .checklist .box{flex:0 0 auto;width:18px;height:18px;border:1.5px solid var(--hair);border-radius:4px;margin-top:2px;}
+
+  .restart-row{text-align:center;margin:44px 0 8px;}
+  .restart-btn{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--ink-soft);background:none;border:1px solid var(--hair);
+    border-radius:999px;padding:9px 18px;cursor:pointer;
+  }
+  .restart-btn:hover{border-color:var(--teal);color:var(--teal);}
+
+  .footnote{font-size:12.5px;color:var(--ink-soft);border-top:1px solid var(--hair);padding-top:16px;margin-top:56px;text-align:center;}
+  .footnote.privacy{font-family:'IBM Plex Mono',monospace;color:var(--ok);border-top:none;padding-top:0;margin-top:8px;}
+</style>
+</head>
+<body>
+
+<div class="topbar-outer">
+  <div class="topbar-inner">
+    <a href="index.html" class="eyebrow">Florida Medicaid &amp; Disability Benefits Guide</a>
+    <span class="privacy-chip">Nothing you enter is saved</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+    <div class="progress-label" id="progressLabel">Step 1 of 5</div>
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="stepcard" data-step="forWhom">
+    <div class="steplabel">Getting started</div>
+    <h1 class="stepq">Who is this for?</h1>
+    <p class="stephint">This changes which paperwork and deadlines matter most.</p>
+    <div class="optlist">
+      <button class="opt" data-value="self">
+        <span class="k">A</span>
+        <span class="t"><span class="main">Myself</span><span class="sub">I'm the person navigating my own benefits.</span></span>
+      </button>
+      <button class="opt" data-value="caregiver">
+        <span class="k">B</span>
+        <span class="t"><span class="main">Someone I care for</span><span class="sub">A parent, guardian, or family caregiver.</span></span>
+      </button>
+    </div>
+    <div class="navrow"><button class="backbtn" disabled>&larr; Back</button><span></span></div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="stepcard hide" data-step="stage">
+    <div class="steplabel">The situation right now</div>
+    <h1 class="stepq">What's going on?</h1>
+    <p class="stephint">The single biggest fork in this whole system is turning 18 — so start here.</p>
+    <div class="optlist">
+      <button class="opt" data-value="turning18">
+        <span class="k">A</span>
+        <span class="t"><span class="main">About to turn 18, or just turned 18</span><span class="sub">Has never been able to work or live independently.</span></span>
+      </button>
+      <button class="opt" data-value="adult18plus">
+        <span class="k">B</span>
+        <span class="t"><span class="main">Already an adult (18+)</span><span class="sub">Already went through — or should have gone through — that transition.</span></span>
+      </button>
+      <button class="opt" data-value="under18">
+        <span class="k">C</span>
+        <span class="t"><span class="main">Under 18</span><span class="sub">Currently receiving, or applying for, SSI/Medicaid as a minor.</span></span>
+      </button>
+      <button class="opt" data-value="unsure">
+        <span class="k">D</span>
+        <span class="t"><span class="main">Not sure / just starting to look into this</span></span>
+      </button>
+    </div>
+    <div class="navrow"><button class="backbtn">&larr; Back</button><span></span></div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="stepcard hide" data-step="hasLetter">
+    <div class="steplabel">Paperwork check</div>
+    <h1 class="stepq">Have you received a letter or notice recently?</h1>
+    <p class="stephint">From DCF, APD, or Social Security — any agency letter about Medicaid, a waiver, or a disability decision.</p>
+    <div class="optlist">
+      <button class="opt" data-value="yes">
+        <span class="k">A</span>
+        <span class="t"><span class="main">Yes</span></span>
+      </button>
+      <button class="opt" data-value="no">
+        <span class="k">B</span>
+        <span class="t"><span class="main">No</span></span>
+      </button>
+      <button class="opt" data-value="unsure">
+        <span class="k">C</span>
+        <span class="t"><span class="main">Not sure</span></span>
+      </button>
+    </div>
+    <div class="navrow"><button class="backbtn">&larr; Back</button><span></span></div>
+  </div>
+
+  <!-- STEP 4 (conditional) -->
+  <div class="stepcard hide" data-step="letterAgency">
+    <div class="steplabel">Paperwork check</div>
+    <h1 class="stepq">What does the letter mention?</h1>
+    <p class="stephint">Look for these clues — pick the closest match.</p>
+    <div class="optlist">
+      <button class="opt" data-value="dcf">
+        <span class="k">A</span>
+        <span class="t"><span class="main">Medicaid renewal, or your ACCESS account</span></span>
+      </button>
+      <button class="opt" data-value="apd">
+        <span class="k">B</span>
+        <span class="t"><span class="main">iBudget, a waiver, or a waitlist</span></span>
+      </button>
+      <button class="opt" data-value="ssa">
+        <span class="k">C</span>
+        <span class="t"><span class="main">An exam, turning 18, or a disability redetermination</span></span>
+      </button>
+      <button class="opt" data-value="unsure">
+        <span class="k">D</span>
+        <span class="t"><span class="main">Not sure</span></span>
+      </button>
+    </div>
+    <div class="navrow"><button class="backbtn">&larr; Back</button><span></span></div>
+  </div>
+
+  <!-- STEP 5 (conditional) -->
+  <div class="stepcard hide" data-step="parentOnSSBenefits">
+    <div class="steplabel">Easy to miss</div>
+    <h1 class="stepq">Is a parent on Social Security disability or retirement — or have they passed away?</h1>
+    <p class="stephint">This unlocks a separate, often larger benefit almost nobody hears about on their own.</p>
+    <div class="optlist">
+      <button class="opt" data-value="yes">
+        <span class="k">A</span>
+        <span class="t"><span class="main">Yes</span></span>
+      </button>
+      <button class="opt" data-value="no">
+        <span class="k">B</span>
+        <span class="t"><span class="main">No</span></span>
+      </button>
+      <button class="opt" data-value="unsure">
+        <span class="k">C</span>
+        <span class="t"><span class="main">Not sure</span></span>
+      </button>
+    </div>
+    <div class="navrow"><button class="backbtn">&larr; Back</button><span></span></div>
+  </div>
+
+  <!-- STEP 6 -->
+  <div class="stepcard hide" data-step="knowsVR">
+    <div class="steplabel">Last question</div>
+    <h1 class="stepq">Had you already heard of Vocational Rehabilitation services before today?</h1>
+    <p class="stephint">Florida's free employment-support program for people with disabilities — job coaching, training, equipment.</p>
+    <div class="optlist">
+      <button class="opt" data-value="yes">
+        <span class="k">A</span>
+        <span class="t"><span class="main">Yes, already know about it</span></span>
+      </button>
+      <button class="opt" data-value="no">
+        <span class="k">B</span>
+        <span class="t"><span class="main">No, first I'm hearing of it</span></span>
+      </button>
+    </div>
+    <div class="navrow"><button class="backbtn">&larr; Back</button><span></span></div>
+  </div>
+
+  <!-- RESULTS -->
+  <div class="results" id="results">
+    <div class="r-hero">
+      <div class="r-eyebrow">Your checklist</div>
+      <h1 class="r-title" id="rTitle">Here's where to start.</h1>
+      <p class="r-summary" id="rSummary"></p>
+    </div>
+
+    <div class="r-section" id="rDoFirst"></div>
+    <div class="r-section" id="rUnknownBenefits"></div>
+
+    <div class="r-section">
+      <div class="r-section-title"><span class="tag">Gather</span> Documents to start pulling together</div>
+      <div class="r-card">
+        <ul class="checklist" id="rDocs"></ul>
+      </div>
+    </div>
+
+    <div class="r-section">
+      <div class="r-section-title"><span class="tag">Support</span> Who else can help</div>
+      <div class="r-card">
+        <ul class="linklist">
+          <li><a href="https://disabilityrightsflorida.org/" target="_blank" rel="noopener">Disability Rights Florida — free legal help &amp; advocacy →</a></li>
+          <li><a href="https://floridahealthjustice.org/publications/what-if-my-dcf-notice-says-my-medicaid-is-ending-but-i-am-disabled/" target="_blank" rel="noopener">Florida Health Justice Project — disability &amp; Medicaid FAQ →</a></li>
+          <li><a href="https://navigator.apd.myflorida.com/" target="_blank" rel="noopener">Florida Navigator — find local disability services and orgs →</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="restart-row">
+      <button class="restart-btn" id="restartBtn">Start over</button>
+    </div>
+
+    <p class="footnote privacy">Nothing you entered here was saved, stored, or sent anywhere — this all happened in your browser.</p>
+    <p class="footnote">Prototype — for demonstration purposes. Not affiliated with DCF, APD, or the Social Security Administration.</p>
+  </div>
+
+</div>
+
+<script>
+const STEPS = ['forWhom','stage','hasLetter','letterAgency','parentOnSSBenefits','knowsVR'];
+const answers = {};
+let history = [];
+
+function stepIsApplicable(step){
+  if(step === 'letterAgency') return answers.hasLetter === 'yes';
+  if(step === 'parentOnSSBenefits') return answers.stage === 'turning18' || answers.stage === 'adult18plus';
+  return true;
+}
+
+function nextApplicableIndex(fromIdx){
+  let i = fromIdx;
+  while(i < STEPS.length && !stepIsApplicable(STEPS[i])) i++;
+  return i;
+}
+
+function showStep(step){
+  document.querySelectorAll('.stepcard').forEach(el => {
+    el.classList.toggle('hide', el.dataset.step !== step);
+  });
+  const idx = STEPS.indexOf(step);
+  const totalApplicable = STEPS.filter(stepIsApplicable).length;
+  const posApplicable = STEPS.slice(0, idx+1).filter(stepIsApplicable).length;
+  document.getElementById('progressFill').style.width = Math.round((posApplicable/(totalApplicable+1))*100) + '%';
+  document.getElementById('progressLabel').textContent = `Step ${posApplicable} of ${totalApplicable}`;
+}
+
+function goToStepIndex(idx){
+  if(idx >= STEPS.length){
+    renderResults();
+    return;
+  }
+  const step = STEPS[idx];
+  if(!stepIsApplicable(step)){
+    goToStepIndex(idx+1);
+    return;
+  }
+  showStep(step);
+}
+
+document.querySelectorAll('.opt').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.stepcard');
+    const step = card.dataset.step;
+    answers[step] = btn.dataset.value;
+    history.push(step);
+    const idx = STEPS.indexOf(step);
+    goToStepIndex(idx+1);
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+});
+
+document.querySelectorAll('.backbtn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const prevStep = history.pop();
+    if(!prevStep) return;
+    document.getElementById('results').classList.remove('show');
+    document.getElementById('progressWrap').style.display = '';
+    showStep(prevStep);
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+});
+
+document.getElementById('restartBtn').addEventListener('click', () => {
+  Object.keys(answers).forEach(k => delete answers[k]);
+  history = [];
+  document.getElementById('results').classList.remove('show');
+  document.getElementById('progressWrap').style.display = '';
+  goToStepIndex(0);
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+
+const AGENCY_LINKS = {
+  dcf: [
+    { label: "Florida Medicaid (DCF)", url: "https://www.myflfamilies.com/medicaid" },
+    { label: "MyACCESS account portal", url: "https://www.myflfamilies.com/myaccess" }
+  ],
+  apd: [
+    { label: "Agency for Persons with Disabilities (APD)", url: "https://apd.myflorida.com/" },
+    { label: "Florida Navigator — find state disability services", url: "https://navigator.apd.myflorida.com/" }
+  ],
+  ssa: [
+    { label: "Social Security disability benefits", url: "https://www.ssa.gov/benefits/disability/" },
+    { label: "Supplemental Security Income (SSI)", url: "https://www.ssa.gov/ssi/" },
+    { label: "About consultative examinations", url: "https://www.ssa.gov/disabilityresearch/ce.htm" }
+  ]
+};
+
+function linksHTML(links){
+  return '<ul class="linklist">' + links.map(l => `<li><a href="${l.url}" target="_blank" rel="noopener">${l.label} →</a></li>`).join('') + '</ul>';
+}
+
+function renderResults(){
+  document.getElementById('progressWrap').style.display = 'none';
+  document.querySelectorAll('.stepcard').forEach(el => el.classList.add('hide'));
+  document.getElementById('results').classList.add('show');
+
+  const forWhom = answers.forWhom;
+  const stage = answers.stage;
+  const hasLetter = answers.hasLetter;
+  const letterAgency = answers.letterAgency;
+  const parentOnSS = answers.parentOnSSBenefits;
+  const knowsVR = answers.knowsVR;
+
+  // --- Title + summary ---
+  const who = forWhom === 'self' ? 'you' : 'the person you care for';
+  let stageLabel = {
+    turning18: 'about to turn 18',
+    adult18plus: 'an adult (18+)',
+    under18: 'under 18',
+    unsure: 'still figuring out where things stand'
+  }[stage];
+  document.getElementById('rTitle').textContent = `Here's what matters most right now.`;
+  document.getElementById('rSummary').textContent =
+    `Based on what you shared: this is for ${who === 'you' ? 'yourself' : who}, ${stageLabel}. Here's the checklist built around that.`;
+
+  // --- Do first section ---
+  let doFirstHTML = '<div class="r-section-title flag"><span class="tag">Priority</span> Do this first</div>';
+
+  if(hasLetter === 'yes' && letterAgency && letterAgency !== 'unsure'){
+    const agencyCopy = {
+      dcf: {
+        name: 'DCF — Medicaid Renewal',
+        body: "This is about your Medicaid eligibility, not a disability decision by itself. If there's a qualifying disability involved, submit disability documentation and file an appeal <b>before the date on the notice</b> — that keeps coverage active while it's reviewed. You can still appeal up to 90 days after the end date, but coverage won't continue in the meantime.",
+        contact: "Medicaid Helpline: 1-877-254-1055 · MyACCESS: myflfamilies.com/myaccess"
+      },
+      apd: {
+        name: 'APD — iBudget Waiver',
+        body: "This is a separate application from Medicaid, for extra services (therapy, residential support) on top of it. If you don't already have documentation of the disability, APD is required to help you get an evaluation at no cost. Expect this to end in a waitlist even once approved — get on it as early as possible.",
+        contact: "APD: 1-866-APD-CARES (1-866-273-2273)"
+      },
+      ssa: {
+        name: 'SSA — Disability Review',
+        body: "This is usually the hardest gate, especially at the age-18 redetermination. Respond by the deadline on the notice, and if a consultative exam is scheduled, attend it — missing it is one of the most common reasons for an otherwise-fixable case to get denied.",
+        contact: "SSA: 1-800-772-1213"
+      }
+    }[letterAgency];
+    doFirstHTML += `<div class="r-card"><p><b>${agencyCopy.name}.</b> ${agencyCopy.body}</p><p class="contact">${agencyCopy.contact}</p></div>`;
+    doFirstHTML += linksHTML(AGENCY_LINKS[letterAgency]);
+  } else if(hasLetter === 'yes' && (!letterAgency || letterAgency === 'unsure')){
+    doFirstHTML += `<div class="r-card"><p>Not sure which agency sent it yet — that's the most common source of confusion here, since DCF, APD, and Social Security all send letters that look similar. Use the full letter decoder to figure out which one you're dealing with and what it actually means.</p></div>`;
+    doFirstHTML += `<ul class="linklist"><li><a href="coverage_tool.html">Open the full letter decoder →</a></li></ul>`;
+  } else if(stage === 'turning18'){
+    doFirstHTML += `<div class="r-card"><p>The single biggest thing to watch for is the <b>SSA age-18 disability redetermination</b> — Social Security re-evaluates the case under adult rules, and this is the step where most people who don't already qualify get denied at first, often for fixable paperwork reasons. Medicaid coverage typically follows automatically once SSA approves.</p><p class="contact">SSA: 1-800-772-1213</p></div>`;
+    doFirstHTML += linksHTML(AGENCY_LINKS.ssa);
+  } else if(stage === 'adult18plus'){
+    doFirstHTML += `<div class="r-card"><p>Make sure Medicaid renewal and any Social Security review deadlines aren't quietly lapsing in the background — these run on their own clocks and don't always send obvious reminders.</p></div>`;
+    doFirstHTML += linksHTML(AGENCY_LINKS.dcf.concat(AGENCY_LINKS.ssa));
+  } else if(stage === 'under18'){
+    doFirstHTML += `<div class="r-card"><p>Focus on keeping medical, school (IEP/504), and functional documentation current now — this is exactly what makes the age-18 redetermination go smoothly later instead of starting from zero.</p></div>`;
+    doFirstHTML += `<ul class="linklist"><li><a href="https://www.ssa.gov/pubs/EN-05-10026.pdf" target="_blank" rel="noopener">Benefits for children with disabilities →</a></li></ul>`;
+  } else {
+    doFirstHTML += `<div class="r-card"><p>Start by figuring out which of the three agencies actually applies to your situation — Florida disability benefits run through DCF (Medicaid), APD (iBudget waiver), and Social Security (disability/SSI), and they rarely coordinate with each other.</p></div>`;
+    doFirstHTML += linksHTML(AGENCY_LINKS.dcf.concat(AGENCY_LINKS.apd, AGENCY_LINKS.ssa));
+  }
+  document.getElementById('rDoFirst').innerHTML = doFirstHTML;
+
+  // --- Unknown benefits callouts ---
+  let unknownHTML = '';
+  const showDAC = (stage === 'turning18' || stage === 'adult18plus') && (parentOnSS === 'yes' || parentOnSS === 'unsure');
+  const showVR = knowsVR === 'no';
+  if(showDAC || showVR){
+    unknownHTML += '<div class="r-section-title ok"><span class="tag">Easy to miss</span> Benefits most families never hear about</div>';
+    if(showDAC){
+      unknownHTML += `<div class="r-callout"><p class="title">Disabled Adult Child (DAC) benefits</p><p>${parentOnSS === 'yes' ? "Since a parent is on Social Security disability or retirement (or has passed away), " : "If a parent is on Social Security disability or retirement, or has passed away, "}there may be a separate benefit based on the <b>parent's</b> work record — often larger than SSI, and it doesn't stop at 18 the way people assume. Ask Social Security about this by name; it's easy for it to get missed.</p></div>`;
+    }
+    if(showVR){
+      unknownHTML += `<div class="r-callout"><p class="title">Vocational Rehabilitation (VR)</p><p>Florida's free program for job coaching, training, and workplace equipment for people with disabilities. It runs alongside — not instead of — Medicaid or SSI, and most families we've talked to had never heard of it.</p></div>`;
+      unknownHTML += `<ul class="linklist"><li><a href="https://www.rehabworks.org/" target="_blank" rel="noopener">Florida Vocational Rehabilitation →</a></li></ul>`;
+    }
+  }
+  document.getElementById('rUnknownBenefits').innerHTML = unknownHTML;
+
+  // --- Documents checklist ---
+  const docs = [
+    "Recent medical, psychological, or developmental evaluation records",
+    "School records — IEP or 504 plan, if applicable",
+    "Proof of income and resources (for Medicaid/SSI eligibility)",
+    "Any prior award or denial letters from DCF, APD, or SSA"
+  ];
+  if(forWhom === 'caregiver') docs.push("Guardianship or representative-payee paperwork, if applicable");
+  document.getElementById('rDocs').innerHTML = docs.map(d => `<li><span class="box"></span><span>${d}</span></li>`).join('');
+}
+
+goToStepIndex(0);
+</script>
+
+</body>
+</html>
