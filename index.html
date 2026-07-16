@@ -61,7 +61,10 @@
   .start-cue{
     display:flex;align-items:center;justify-content:center;gap:12px;
     margin:0 0 16px;animation:cueBounce 1.8s ease-in-out infinite;
+    cursor:pointer;
   }
+  .cta-wrap{cursor:pointer;}
+  .cta-wrap .cta-button{cursor:pointer;}
   .start-cue__arrow{color:var(--flag);font-size:20px;line-height:1;display:inline-block;}
   .start-cue__arrow--left{transform:scaleX(1);}
   .start-cue__arrow--right{transform:scaleX(-1);}
@@ -679,14 +682,15 @@ function initWizard(){
   goToStepIndex(0);
 }
 
-document.getElementById('ctaButton').addEventListener('click', () => {
+function revealWizard(){
   const section = document.getElementById('wizardSection');
   document.getElementById('ctaWrap').classList.add('hide-cta');
   section.classList.add('visible');
   requestAnimationFrame(() => requestAnimationFrame(() => section.classList.add('show')));
   initWizard();
   section.scrollIntoView({behavior:'smooth', block:'start'});
-});
+}
+document.getElementById('ctaWrap').addEventListener('click', revealWizard);
 </script>
 </body>
 </html>
