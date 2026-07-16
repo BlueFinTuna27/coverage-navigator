@@ -96,35 +96,14 @@
     <p class="stat-source" id="statSource">Source: SSA FY2025 disability workload data</p>
   </div>
 
-  <div class="checkin-card" id="checkinCard">
-    <p class="checkin-title" id="checkinTitle">Quick check-in — this just points the button below to the right place</p>
-    <div class="checkin-q">
-      <div class="checkin-label" id="q1Label">Have you received a letter yet?</div>
-      <div class="pill-row" id="q1Options"></div>
-    </div>
-    <div class="checkin-q" id="q2Wrap" style="display:none;">
-      <div class="checkin-label" id="q2Label">Who's it from?</div>
-      <div class="pill-row" id="q2Options"></div>
-    </div>
-    <div class="checkin-q">
-      <div class="checkin-label" id="q3Label">Is this for someone about to turn 18, or already an adult?</div>
-      <div class="pill-row" id="q3Options"></div>
-    </div>
-  </div>
-
   <div class="explain" id="explainText">
     <p><b>This isn't a sign anything was done wrong.</b> Initial decisions are often made from incomplete records, without anyone hearing directly from the applicant or their family. That's exactly where this guide is meant to help — before a letter turns into a missed deadline.</p>
     <p>Inside: a plain-language explanation of whichever notice you've received, which of the three agencies actually sent it, and — for the hardest step, Social Security's review — exactly what the form is really asking and how to answer it.</p>
   </div>
 
   <div class="cta-wrap">
-    <a href="start.html" class="cta-button" id="ctaButtonWizard">Get your personal checklist →</a>
-    <p class="cta-sub">A few quick questions, tailored to your situation. Nothing you enter is saved.</p>
-  </div>
-
-  <div class="cta-wrap" style="margin-top:0;">
-    <a href="coverage_tool.html" class="cta-button" id="ctaButton" style="background:transparent;color:var(--brand);border:1.5px solid var(--brand-dim);box-shadow:none;">Already have a letter? Decode it directly →</a>
-    <p class="cta-sub" id="ctaSub">Takes about two minutes. No account, no data saved.</p>
+    <a href="start.html" class="cta-button" id="ctaButton">See what your letter means →</a>
+    <p class="cta-sub" id="ctaSub">Takes about two minutes. No account, <b>no data saved</b>.</p>
   </div>
 
   <p class="footnote" id="footnoteText">Prototype — for demonstration purposes. Not affiliated with DCF, APD, or the Social Security Administration.</p>
@@ -138,100 +117,31 @@ const STRINGS = {
     eyebrow: "Florida Medicaid & Disability Benefits Guide",
     pageLabel: "Before you start",
     title: "How to Navigate Florida's Disability Benefits System",
-    lede: "Florida disability benefits run through DCF, APD, and Social Security — three agencies that rarely coordinate with each other. Most families find this out the hard way: after a letter arrives that doesn't explain what's actually happening.",
+    lede: "Florida disability benefits run through DCF, APD, and Social Security — three agencies that rarely coordinate with each other, which is exactly how people fall through the cracks. Most families find this out the hard way: after a letter arrives that doesn't explain what's actually happening.",
     statNumber: "1.4M+",
     statCaption: "people are denied Social Security disability benefits at initial application, every year — most for paperwork and evidence reasons that are fixable if you know what's being asked.",
     statSource: "Source: SSA FY2025 disability workload data",
-    explain1: "<b>This isn't a sign anything was done wrong.</b> Initial decisions are often made from incomplete records, without anyone hearing directly from the applicant or their family. That's exactly where this guide is meant to help — before a letter turns into a missed deadline.",
+    explain1: "<b>This isn't a sign anything was done wrong — it's a systemic failure, not a personal one.</b> Initial decisions are often made from incomplete records, without anyone hearing directly from the applicant or their family. That's exactly where this guide is meant to help — before a letter turns into a missed deadline.",
     explain2: "Inside: a plain-language explanation of whichever notice you've received, which of the three agencies actually sent it, and — for the hardest step, Social Security's review — exactly what the form is really asking and how to answer it.",
     cta: "See what your letter means →",
-    ctaSub: "Takes about two minutes. No account, no data saved.",
-    footnote: "Prototype — for demonstration purposes. Not affiliated with DCF, APD, or the Social Security Administration.",
-    checkinTitle: "Quick check-in — this just points the button below to the right place",
-    q1Label: "Have you received a letter yet?",
-    q2Label: "Who's it from?",
-    q3Label: "Is this for someone about to turn 18, or already an adult?"
+    ctaSub: "Takes about two minutes. No account, <b>no data saved</b>.",
+    footnote: "Prototype — for demonstration purposes. Not affiliated with DCF, APD, or the Social Security Administration."
   },
   es: {
     eyebrow: "Guía de Medicaid y Beneficios por Discapacidad de Florida",
     pageLabel: "Antes de empezar",
     title: "Cómo Navegar el Sistema de Beneficios por Discapacidad de Florida",
-    lede: "Los beneficios por discapacidad en Florida pasan por DCF, APD, y el Seguro Social — tres agencias que casi nunca se coordinan entre sí. La mayoría de las familias lo descubren de la peor manera: cuando llega una carta que no explica qué está pasando realmente.",
+    lede: "Los beneficios por discapacidad en Florida pasan por DCF, APD, y el Seguro Social — tres agencias que casi nunca se coordinan entre sí, que es exactamente cómo las personas terminan cayendo por las grietas del sistema. La mayoría de las familias lo descubren de la peor manera: cuando llega una carta que no explica qué está pasando realmente.",
     statNumber: "1.4M+",
     statCaption: "personas son rechazadas para beneficios por discapacidad del Seguro Social en la solicitud inicial, cada año — la mayoría por razones de papeleo y evidencia que se pueden corregir si sabe qué se está pidiendo.",
     statSource: "Fuente: datos de carga de trabajo de discapacidad de SSA, año fiscal 2025",
-    explain1: "<b>Esto no es una señal de que algo se hizo mal.</b> Las decisiones iniciales a menudo se toman con expedientes incompletos, sin que nadie escuche directamente al solicitante o su familia. Para eso está exactamente esta guía — antes de que una carta se convierta en una fecha límite perdida.",
+    explain1: "<b>Esto no es una señal de que algo se hizo mal — es una falla sistémica, no personal.</b> Las decisiones iniciales a menudo se toman con expedientes incompletos, sin que nadie escuche directamente al solicitante o su familia. Para eso está exactamente esta guía — antes de que una carta se convierta en una fecha límite perdida.",
     explain2: "Adentro: una explicación en lenguaje sencillo de la carta que haya recibido, cuál de las tres agencias realmente la envió, y — para el paso más difícil, la revisión del Seguro Social — exactamente qué está pidiendo el formulario y cómo responderlo.",
     cta: "Vea qué significa su carta →",
-    ctaSub: "Toma unos dos minutos. Sin cuenta, sin datos guardados.",
-    footnote: "Prototipo — con fines de demostración. No afiliado con DCF, APD, ni la Administración del Seguro Social.",
-    checkinTitle: "Un par de preguntas — solo para llevarlo al botón correcto abajo",
-    q1Label: "¿Ya recibió una carta?",
-    q2Label: "¿De quién es?",
-    q3Label: "¿Esto es para alguien que está por cumplir 18 años, o ya es adulto?"
+    ctaSub: "Toma unos dos minutos. Sin cuenta, <b>sin datos guardados</b>.",
+    footnote: "Prototipo — con fines de demostración. No afiliado con DCF, APD, ni la Administración del Seguro Social."
   }
 };
-
-const CHECKIN = {
-  hasLetter: [
-    { value:'yes', en:'Yes', es:'Sí' },
-    { value:'no', en:'No', es:'No' },
-    { value:'unsure', en:'Not sure', es:'No estoy seguro/a' }
-  ],
-  agency: [
-    { value:'dcf', en:'DCF', es:'DCF' },
-    { value:'apd', en:'APD', es:'APD' },
-    { value:'ssa', en:'Social Security', es:'Seguro Social' },
-    { value:'unsure', en:'Not sure', es:'No estoy seguro/a' }
-  ],
-  stage: [
-    { value:'minor', en:'About to turn 18', es:'Está por cumplir 18 años' },
-    { value:'adult', en:'Already 18+', es:'Ya tiene 18+' },
-    { value:'na', en:'Not applicable', es:'No aplica' }
-  ]
-};
-
-// Answers live only in memory for this page view — nothing is stored or sent anywhere.
-let checkinAnswers = { hasLetter:null, agency:null, stage:null };
-
-function renderPillRow(containerId, options, answerKey){
-  const el = document.getElementById(containerId);
-  el.innerHTML = '';
-  options.forEach(opt=>{
-    const btn = document.createElement('button');
-    btn.type = 'button';
-    btn.className = 'pill' + (checkinAnswers[answerKey] === opt.value ? ' selected' : '');
-    btn.textContent = opt[currentLang];
-    btn.addEventListener('click', ()=>{
-      checkinAnswers[answerKey] = (checkinAnswers[answerKey] === opt.value) ? null : opt.value;
-      if(answerKey === 'hasLetter' && checkinAnswers.hasLetter !== 'yes'){ checkinAnswers.agency = null; }
-      renderCheckin();
-    });
-    el.appendChild(btn);
-  });
-}
-
-function renderCheckin(){
-  document.getElementById('checkinTitle').textContent = t('checkinTitle');
-  document.getElementById('q1Label').textContent = t('q1Label');
-  document.getElementById('q2Label').textContent = t('q2Label');
-  document.getElementById('q3Label').textContent = t('q3Label');
-  renderPillRow('q1Options', CHECKIN.hasLetter, 'hasLetter');
-  renderPillRow('q2Options', CHECKIN.agency, 'agency');
-  renderPillRow('q3Options', CHECKIN.stage, 'stage');
-  document.getElementById('q2Wrap').style.display = (checkinAnswers.hasLetter === 'yes') ? 'block' : 'none';
-  updateCtaHref();
-}
-
-function updateCtaHref(){
-  const params = new URLSearchParams();
-  let agency = (checkinAnswers.agency && checkinAnswers.agency !== 'unsure') ? checkinAnswers.agency : null;
-  if(!agency && checkinAnswers.stage === 'minor'){ agency = 'ssa'; }
-  if(agency) params.set('agency', agency);
-  if(currentLang === 'es') params.set('lang', 'es');
-  const qs = params.toString();
-  document.getElementById('ctaButton').setAttribute('href', 'coverage_tool.html' + (qs ? ('?' + qs) : ''));
-}
 
 function t(key){ return STRINGS[currentLang][key]; }
 
@@ -245,11 +155,10 @@ function applyLanguage(){
   document.getElementById('statSource').textContent = t('statSource');
   document.getElementById('explainText').innerHTML = `<p>${t('explain1')}</p><p>${t('explain2')}</p>`;
   document.getElementById('ctaButton').textContent = t('cta');
-  document.getElementById('ctaSub').textContent = t('ctaSub');
+  document.getElementById('ctaSub').innerHTML = t('ctaSub');
   document.getElementById('footnoteText').textContent = t('footnote');
   document.getElementById('btnEN').classList.toggle('active', currentLang==='en');
   document.getElementById('btnES').classList.toggle('active', currentLang==='es');
-  renderCheckin();
 }
 
 document.getElementById('btnEN').addEventListener('click', ()=>{ currentLang='en'; applyLanguage(); });
