@@ -173,6 +173,30 @@
     border-radius:999px;padding:9px 18px;cursor:pointer;
   }
   .restart-btn:hover{border-color:var(--teal);color:var(--teal);}
+
+  .r-nextstep{margin-top:48px;padding-top:34px;border-top:1px solid var(--hair);}
+  .r-nextstep-card{
+    background:linear-gradient(135deg, var(--brand) 0%, #234A70 100%);
+    color:#fff;border-radius:16px;padding:34px 30px;
+    box-shadow:0 8px 24px rgba(27,58,92,.22);
+  }
+  .r-nextstep-eyebrow{
+    font-family:'IBM Plex Mono',monospace;font-weight:700;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
+    color:#AFCBE2;margin-bottom:12px;
+  }
+  .r-nextstep-title{
+    font-family:'Public Sans',sans-serif;font-weight:800;font-size:clamp(20px,2.8vw,25px);
+    color:#fff;margin:0 0 14px;max-width:24ch;line-height:1.25;
+  }
+  .r-nextstep-card p{color:rgba(255,255,255,.88);font-size:15px;margin:0 0 24px;max-width:58ch;}
+  .r-nextstep-btn{
+    display:inline-flex;align-items:center;gap:10px;
+    background:#fff;color:var(--brand);font-family:'Public Sans',sans-serif;font-weight:700;font-size:16px;
+    padding:15px 30px;border-radius:10px;text-decoration:none;transition:background .15s, transform .15s, gap .15s;
+  }
+  .r-nextstep-btn:hover{background:var(--brand-dim);gap:14px;}
+  .r-nextstep-btn__arrow{transition:transform .15s;}
+  .r-nextstep-btn:hover .r-nextstep-btn__arrow{transform:translateX(2px);}
 </style>
 </head>
 <body>
@@ -387,12 +411,13 @@
         </div>
       </div>
 
-      <div class="r-section">
-        <div class="r-section-title"><span class="tag">Full picture</span> Want to see the whole process?</div>
-        <div class="r-card">
-          <p>This checklist covers what matters most for your specific situation. If you'd rather see how all three agencies — DCF, APD, and Social Security — fit together, and get a plain-language read on a specific letter, the full letter decoder walks through that end to end.</p>
+      <div class="r-section r-nextstep">
+        <div class="r-nextstep-card">
+          <div class="r-nextstep-eyebrow">One more step</div>
+          <h3 class="r-nextstep-title">See how all three agencies fit together</h3>
+          <p>This checklist covers what matters most for your specific situation. For the complete picture — how DCF, APD, and Social Security connect, and a plain-language read on a specific letter — the full letter decoder walks through the entire process end to end.</p>
+          <a href="coverage_tool.html" class="r-nextstep-btn">Open the full letter decoder <span class="r-nextstep-btn__arrow">→</span></a>
         </div>
-        <ul class="linklist"><li><a href="coverage_tool.html">Open the full letter decoder →</a></li></ul>
       </div>
 
       <div class="restart-row">
