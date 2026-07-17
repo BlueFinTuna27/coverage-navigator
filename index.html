@@ -229,6 +229,71 @@
     <p><b>This isn't a sign anything was done wrong.</b> Initial decisions are often made from incomplete records, without anyone hearing directly from the applicant or their family. That's exactly where this guide is meant to help — before a letter turns into a missed deadline.</p>
     <p>Inside: a plain-language explanation of whichever notice you've received, which of the three agencies actually sent it, and — for the hardest step, Social Security's review — exactly what the form is really asking and how to answer it.</p>
   </div>
+<!-- ============================================================
+  VIDEO WALKTHROUGH SECTION — coverage-navigator/index.html
+  Paste this whole block into the homepage, immediately AFTER the
+  intro paragraph that begins "Inside: a plain-language explanation…"
+  and BEFORE the "Start here" check-in wizard section.
+
+  Prereq: commit the four media files to the repo first:
+    media/walkthrough_en.mp4   media/poster_en.jpg
+    media/walkthrough_es.mp4   media/poster_es.jpg
+  (38MB each — must be pushed via git, NOT the web uploader, which caps at 25MB.)
+  ============================================================ -->
+
+<style>
+.video-guide{background:var(--paper-raised);border:1px solid var(--hair);border-radius:var(--radius);padding:22px;margin:28px 0;}
+.video-guide h3{font-family:'Public Sans',sans-serif;font-weight:700;font-size:18px;color:var(--brand);margin:0 0 4px;}
+.video-guide p{font-size:13.5px;color:var(--ink-soft);margin:0 0 14px;}
+.video-guide video{width:100%;border-radius:8px;display:block;background:#000;}
+.video-lang{display:none;}
+.video-lang.active{display:block;}
+</style>
+
+<section class="video-guide">
+  <div class="video-lang active" id="videoEN">
+    <h3>Prefer to watch first?</h3>
+    <p>An 8-minute walkthrough of how Florida's three-agency system fits together, and how to use this guide. Plays only if you press play &mdash; nothing loads or is tracked otherwise.</p>
+    <video controls preload="none" poster="media/poster_en.jpg">
+      <source src="media/walkthrough_en.mp4" type="video/mp4">
+      <!-- uncomment once media/captions_en.vtt is committed:
+      <track kind="captions" src="media/captions_en.vtt" srclang="en" label="English" default>
+      -->
+      Your browser does not support embedded video.
+    </video>
+  </div>
+  <div class="video-lang" id="videoES">
+    <h3>&iquest;Prefiere ver un video primero?</h3>
+    <p>Una gu&iacute;a de 8 minutos sobre c&oacute;mo funcionan las tres agencias de Florida, y c&oacute;mo usar esta herramienta. Solo se carga si presiona reproducir &mdash; nada se rastrea.</p>
+    <video controls preload="none" poster="media/poster_es.jpg">
+      <source src="media/walkthrough_es.mp4" type="video/mp4">
+      <!-- descomentar cuando media/captions_es.vtt esté en el repo:
+      <track kind="captions" src="media/captions_es.vtt" srclang="es" label="Español" default>
+      -->
+      Su navegador no soporta video incorporado.
+    </video>
+  </div>
+</section>
+
+<script>
+(function(){
+  // Additive hook onto the existing EN/ES toggle — does not modify existing handlers.
+  var btns = document.querySelectorAll('.langtoggle button');
+  if (btns.length < 2) return;
+  function showLang(es){
+    document.getElementById('videoEN').classList.toggle('active', !es);
+    document.getElementById('videoES').classList.toggle('active', es);
+    // pause whichever video is being hidden
+    document.querySelectorAll('.video-lang:not(.active) video').forEach(function(v){ v.pause(); });
+  }
+  btns[0].addEventListener('click', function(){ showLang(false); });
+  btns[1].addEventListener('click', function(){ showLang(true); });
+  // initial state: respect ?lang=es or an already-active ES button
+  var es = new URLSearchParams(location.search).get('lang') === 'es'
+           || btns[1].classList.contains('active');
+  showLang(es);
+})();
+</script>
 
   <div class="cta-wrap" id="ctaWrap">
     <div class="start-cue" aria-hidden="true">
