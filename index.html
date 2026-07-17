@@ -248,26 +248,38 @@
 .video-guide video{width:100%;border-radius:8px;display:block;background:#000;}
 .video-lang{display:none;}
 .video-lang.active{display:block;}
+.video-shell{position:relative;}
+.video-guide .bigplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:none;border:none;cursor:pointer;pointer-events:none;padding:0;}
+.video-guide .bigplay span{pointer-events:auto;width:84px;height:84px;border-radius:50%;background:var(--brand);opacity:.92;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(0,0,0,.35);transition:transform .15s;}
+.video-guide .bigplay span:hover{transform:scale(1.08);}
+.video-guide .bigplay svg{width:34px;height:34px;fill:#fff;margin-left:7px;}
+.video-guide .bigplay.hidden{display:none;}
 </style>
 
 <section class="video-guide">
   <div class="video-lang active" id="videoEN">
     <h3>Prefer to watch first?</h3>
     <p>An 8-minute walkthrough of how Florida's three-agency system fits together, and how to use this guide. Plays only if you press play &mdash; nothing loads or is tracked otherwise.</p>
-    <video controls preload="none" poster="media/poster_en.jpg">
-      <source src="media/walkthrough_en.mp4" type="video/mp4">
-      <track kind="captions" src="media/captions_en.vtt" srclang="en" label="English" default>
-      Your browser does not support embedded video.
-    </video>
+    <div class="video-shell">
+      <video controls preload="none" poster="media/poster_en.jpg">
+        <source src="media/walkthrough_en.mp4" type="video/mp4">
+        <track kind="captions" src="media/captions_en.vtt" srclang="en" label="English" default>
+        Your browser does not support embedded video.
+      </video>
+      <button class="bigplay" type="button" aria-label="Play video"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button>
+    </div>
   </div>
   <div class="video-lang" id="videoES">
     <h3>&iquest;Prefiere ver un video primero?</h3>
     <p>Una gu&iacute;a de 8 minutos sobre c&oacute;mo funcionan las tres agencias de Florida, y c&oacute;mo usar esta herramienta. Solo se carga si presiona reproducir &mdash; nada se rastrea.</p>
-    <video controls preload="none" poster="media/poster_es.jpg">
-      <source src="media/walkthrough_es.mp4" type="video/mp4">
-      <track kind="captions" src="media/captions_es.vtt" srclang="es" label="Español" default>
-      Su navegador no soporta video incorporado.
-    </video>
+    <div class="video-shell">
+      <video controls preload="none" poster="media/poster_es.jpg">
+        <source src="media/walkthrough_es.mp4" type="video/mp4">
+        <track kind="captions" src="media/captions_es.vtt" srclang="es" label="Español" default>
+        Su navegador no soporta video incorporado.
+      </video>
+      <button class="bigplay" type="button" aria-label="Reproducir video"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></button>
+    </div>
   </div>
 </section>
 
@@ -288,6 +300,21 @@
   var es = new URLSearchParams(location.search).get('lang') === 'es'
            || btns[1].classList.contains('active');
   showLang(es);
+
+  // big play overlay + captions on by default
+  document.querySelectorAll('.video-shell').forEach(function(shell){
+    var v = shell.querySelector('video');
+    var b = shell.querySelector('.bigplay');
+    b.addEventListener('click', function(){ v.play(); });
+    v.addEventListener('play', function(){
+      b.classList.add('hidden');
+      for (var i = 0; i < v.textTracks.length; i++){
+        if (v.textTracks[i].kind === 'captions') v.textTracks[i].mode = 'showing';
+      }
+    });
+    v.addEventListener('pause', function(){ b.classList.remove('hidden'); });
+    v.addEventListener('ended', function(){ b.classList.remove('hidden'); });
+  });
 })();
 </script>
 
